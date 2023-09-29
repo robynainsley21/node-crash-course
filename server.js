@@ -12,7 +12,11 @@ const _ = require('lodash');
  */
 const server = http.createServer((req, res) => {
     // this callback will run each time a request comes in to the server
-    console.log(req.url, req.method);
+    console.log('this is supposed to be working')
+
+    //lodash
+    const num = _.random(0, 20);
+    console.log(num);
 
     // set header content type
     // sending plain text to the browser
