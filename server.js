@@ -1,6 +1,7 @@
 // launching the website from the local to a browser location?
 const http = require('http');
 const fs = require('fs');
+const _ = require('lodash');
 
 /**
  * Saving the server in variable
