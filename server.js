@@ -12,12 +12,18 @@ const _ = require('lodash');
  */
 const server = http.createServer((req, res) => {
     // this callback will run each time a request comes in to the server
-    console.log('this is supposed to be working')
 
     //lodash
     const num = _.random(0, 20);
     console.log(num);
 
+    //using lodash to run a function only once
+    const greet = _.once(() => {
+        console.log('yesssir');
+    });
+
+    greet();
+    greet();
     // set header content type
     // sending plain text to the browser
     res.setHeader('Content-Type', 'text/html');
@@ -42,6 +48,7 @@ const server = http.createServer((req, res) => {
             res.statusCode = 301;
             res.setHeader('Location', '/about');
             res.end();
+            break;
         default:
             path += '404.html';
             res.statusCode = 404;
@@ -67,7 +74,7 @@ const server = http.createServer((req, res) => {
  * Listens for requests. takes an port number as a first argument, and the local host
  * as a second argument
  */
-server.listen(3000, 'localhost', () => {
+server.listen(8080, 'localhost', () => {
     // this function will run when the server starts listening
-    console.log('listening for requests on port 3000')
+    console.log('listening for requests on port 8080');
 })
