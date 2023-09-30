@@ -31,3 +31,22 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.sendFile('./views/about.html', { root: __dirname});
 });
+
+//Redirects
+app.get('/about-us', (req, res) => {
+    //automatically sets the status code
+    res.redirect('/about'); 
+});
+
+//404 Page
+/**
+ * - The 'use' function wil fire for every single request coming in, but only when the request
+ * reaches this point in the code, because all lines of code before will be matched first.
+ * - Since this function does not have a path, the browser will return the 404 page when the
+ * user visits any other page that isnt the home or about page.
+ * - Therefore, this function must be placed at the bottom of the file.
+ */
+app.use((req, res) => {
+    //the browser will not recognize this as a 404, therefore it has to be manually set
+    res.status(404).sendFile('./views/404.html', { root: __dirname});
+})

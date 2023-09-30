@@ -1,3 +1,6 @@
+/**This file is not necessary. Since app.js makes use of ExpressJS, that one will be used*/
+
+
 // launching the website from the local to a browser location?
 const http = require('http');
 const fs = require('fs');
