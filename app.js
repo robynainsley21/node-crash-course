@@ -29,11 +29,18 @@ app.get('/', (req, res) => {
      * The first argument is just a relative path, not the proper path of the file, therefore
      * the second argument states the current directory of the file
      */
-    res.sendFile('./views/index.html', {root: __dirname});
+    // res.sendFile('./views/index.html', {root: __dirname});
+
+    /**
+     * The previous code was part of introducing express. The following is after ejs is installed.
+     * - The 'index' page will be found by ejs and rendered to the browser when on path '/'.
+     */
+    res.render('index');
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile('./views/about.html', { root: __dirname});
+    // res.sendFile('./views/about.html', { root: __dirname});
+    res.render('about');
 });
 
 //Redirects
@@ -41,6 +48,10 @@ app.get('/about-us', (req, res) => {
     //automatically sets the status code
     res.redirect('/about'); 
 });
+
+app.get('/create', (req, res) => {
+    res.render('create');
+})
 
 //404 Page
 /**
@@ -52,5 +63,6 @@ app.get('/about-us', (req, res) => {
  */
 app.use((req, res) => {
     //the browser will not recognize this as a 404, therefore it has to be manually set
-    res.status(404).sendFile('./views/404.html', { root: __dirname});
+    // res.status(404).sendFile('./views/404.html', { root: __dirname});
+    res.status(404).render('404');
 })
