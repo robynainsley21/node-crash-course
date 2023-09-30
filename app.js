@@ -6,6 +6,10 @@ const express = require('express');
 //this is an invocation of importing express; indirectly calling it
 const app = express();
 
+//register view engine
+//alerting the app that ejs will be used to format the views
+app.set('view engine', 'ejs');
+
 //listen for requests
 //returns an instance of the server
 app.listen(8080);
