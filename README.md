@@ -1,7 +1,9 @@
 # node-crash-course
 
-A repository showing the beginnings of learning Node.js 🚀
+A simple website built with Node.js.
+Tutorial by [NetNinja](https://youtube.com/@NetNinja?si=rsS_WLDTo49tqmMJ)🥷.
 
-## Dependencies
+## 📃Featuring:
 - Lodash
-- ExpressJS
+- Express.js
+- View Engines
