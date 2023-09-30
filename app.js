@@ -34,13 +34,14 @@ app.get('/', (req, res) => {
     /**
      * The previous code was part of introducing express. The following is after ejs is installed.
      * - The 'index' page will be found by ejs and rendered to the browser when on path '/'.
+     * - The second parameter will get sent into the targeted file
      */
-    res.render('index');
+    res.render('index', { title: 'Home' });
 });
 
 app.get('/about', (req, res) => {
     // res.sendFile('./views/about.html', { root: __dirname});
-    res.render('about');
+    res.render('about', { title: 'About' });
 });
 
 //Redirects
@@ -50,7 +51,7 @@ app.get('/about-us', (req, res) => {
 });
 
 app.get('/create', (req, res) => {
-    res.render('create');
+    res.render('create', { title: 'Create a new blog' });
 })
 
 //404 Page
@@ -64,5 +65,5 @@ app.get('/create', (req, res) => {
 app.use((req, res) => {
     //the browser will not recognize this as a 404, therefore it has to be manually set
     // res.status(404).sendFile('./views/404.html', { root: __dirname});
-    res.status(404).render('404');
+    res.status(404).render('404', { title: '404' });
 })
