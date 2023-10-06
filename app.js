@@ -32,11 +32,20 @@ app.get('/', (req, res) => {
     // res.sendFile('./views/index.html', {root: __dirname});
 
     /**
+     * part of ejs
+     */
+    const blogs = [
+        {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+        {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+        {title: 'How to defeat browser', snippet: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+    ];
+
+    /**
      * The previous code was part of introducing express. The following is after ejs is installed.
      * - The 'index' page will be found by ejs and rendered to the browser when on path '/'.
      * - The second parameter will get sent into the targeted file
      */
-    res.render('index', { title: 'Home' });
+    res.render('index', { title: 'Home', blogs });
 });
 
 app.get('/about', (req, res) => {
@@ -59,7 +68,7 @@ app.get('/create', (req, res) => {
  * - The 'use' function wil fire for every single request coming in, but only when the request
  * reaches this point in the code, because all lines of code before will be matched first.
  * - Since this function does not have a path, the browser will return the 404 page when the
- * user visits any other page that isnt the home or about page.
+ * user visits any other page that isn't the home or about page.
  * - Therefore, this function must be placed at the bottom of the file.
  */
 app.use((req, res) => {

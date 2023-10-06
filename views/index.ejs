@@ -6,9 +6,8 @@
     <title>Node Crash Course | <%= title %></title>
   </head>
   <body>
-
     <!-- this runs on the server -->
-    
+
     <nav>
       <div class="site-title">
         <a href="/"><h1>Node Crash Course</h1></a>
@@ -23,7 +22,16 @@
 
     <div class="blogs content">
       <h2>All Blogs</h2>
-        <!-- blog content to be changed dynamically -->
+      <!-- blog content to be changed dynamically -->
+      <!-- code below will only be executed when there is more than one blog -->
+      <% if (blogs.length > 0) { %> 
+        <% blogs.forEach(blog => { %>
+          <h3 class="title"><%= blog.title %></h3>
+          <p class="snippet"><%= blog.snippet %></p>
+        <% }) %>
+      <% } else { %>
+        <p>There are no blogs to display.</p>
+      <% } %>
     </div>
   </body>
 </html>
