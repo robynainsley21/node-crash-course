@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Node Crash Course | <%= title %></title>
-  </head>
+  <%- include('./partials/head.ejs') %>
+
   <body>
     <!-- this runs on the server -->
 
-    <nav>
-      <div class="site-title">
-        <a href="/"><h1>Node Crash Course</h1></a>
-        <p>A basic site built with Express.js</p>
-      </div>
-      <ul>
-        <li><a href="/">Blogs</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/create">New Blog</a></li>
-      </ul>
-    </nav>
+    <!-- including the relative path we want to retrieve from (the nav component) --> 
+    <%- include('./partials/nav.ejs') %>
 
     <div class="blogs content">
       <h2>All Blogs</h2>
@@ -33,5 +21,7 @@
         <p>There are no blogs to display.</p>
       <% } %>
     </div>
+
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>
