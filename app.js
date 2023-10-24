@@ -1,6 +1,7 @@
 //the use of express
 
 const express = require('express');
+const morgan = require('morgan');
 
 //express app
 //this is an invocation of importing express; indirectly calling it
@@ -14,16 +15,20 @@ app.set('view engine', 'ejs');
 //returns an instance of the server
 app.listen(8080);
 
-//creating the middleware
-app.use((req, res, next) => {
-    console.log('new request was made:');
-    console.log('host: ', req.hostname);
-    console.log('path: ', req.path);
-    console.log('methodL: ', req.method);
+//middleware & static files (css, images, etc that we are going to make public)
+app.use(express.static('public'));
+app.use(morgan('dev'));
+ 
+// app.use((req, res, next) => {
+//     console.log('new request was made:');
+//     console.log('host: ', req.hostname);
+//     console.log('path: ', req.path);
+//     console.log('methodL: ', req.method);
 
-    //this tells the server to move on to the next code block
-    next();
-});
+//     //this tells the server to move on to the next code block
+//     next();
+// });
+
 
 /**
  * first argument is the path, second argument is a function that is fired once at that location
