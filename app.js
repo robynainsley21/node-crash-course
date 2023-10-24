@@ -14,6 +14,17 @@ app.set('view engine', 'ejs');
 //returns an instance of the server
 app.listen(8080);
 
+//creating the middleware
+app.use((req, res, next) => {
+    console.log('new request was made:');
+    console.log('host: ', req.hostname);
+    console.log('path: ', req.path);
+    console.log('methodL: ', req.method);
+
+    //this tells the server to move on to the next code block
+    next();
+});
+
 /**
  * first argument is the path, second argument is a function that is fired once at that location
  */
@@ -75,4 +86,4 @@ app.use((req, res) => {
     //the browser will not recognize this as a 404, therefore it has to be manually set
     // res.status(404).sendFile('./views/404.html', { root: __dirname});
     res.status(404).render('404', { title: '404' });
-})
+});
